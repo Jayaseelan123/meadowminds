@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Meadow Minds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/meadow-minds-v1.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="images/meadow-minds-logo.png" alt="Meadow Minds Logo"
+                        style="height: 70px; width: auto;"></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="dmit.html">DMIT</a></li>
+                    <li class="dropdown">
+                        <a href="#">Programs <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="student-development.html">Student Development Program</a></li>
+                            <li><a href="faculty-development.html">Faculty Development Program</a></li>
+                            <li><a href="soft-skills.html">Soft Skills Training</a></li>
+                            <li><a href="parental-counselling.html">Parental Counselling</a></li>
+                            <li><a href="outbound-training.html">Outbound Training</a></li>
+                            <li><a href="mock-interview.html">Mock Interview</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header header-contact">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our experts to start your developmental journey.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-card">
+                    <h3 class="mb-30 text-primary">Contact Details</h3>
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Coimbatore Branch(Head Office)<br> Lawly Road,R.S.Puram<br>Coimbatore-641002</p>
+
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Krishnagiri Branch<br>2nd floor,SBI Bank,Wahab Nagar<br>Royakottai Rd,Krishnagiri-635002
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Pollachi Branch<br>kochin Road,Ambarampalayam<br>Pollachi-642004</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 733 877 4604</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>meadowsminds@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h3 class="mb-30 text-primary">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-row grid-2 gap-20">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your mobile number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="Your email address" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Interested Program</label>
+                            <select id="program" name="program">
+                                <option value="">Select a Program</option>
+                                <option value="dmit">DMIT Assessment</option>
+                                <option value="student">Student Development</option>
+                                <option value="faculty">Faculty Development</option>
+                                <option value="soft-skills">Soft Skills & Communication</option>
+                                <option value="parental">Parental Counselling</option>
+                                <option value="outbound">Outbound Training</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full p-15">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="footer-logo"><img src="images/meadow-minds-logo.png" alt="Meadow Minds Logo"
+                            style="height: 70px; width: auto;"></div>
+                    <p>Leading the way in scientific intelligence mapping and holistic student development.</p>
+                    <div class="flex gap-15 mt-20">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="dmit.html">DMIT</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="student-development.html">Student Development</a></li>
+                        <li><a href="faculty-development.html">Faculty Development</a></li>
+                        <li><a href="soft-skills.html">Soft Skills</a></li>
+                        <li><a href="parental-counselling.html">Parental Counselling</a></li>
+                        <li><a href="outbound-training.html">Outbound Training</a></li>
+                        <li><a href="mock-interview.html">Mock Interview</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i>+91 733 877 4604</li>
+                        <li><i class="fas fa-envelope"></i> meadowsminds@gmail.com</li>
+                        <li><i class="fas fa-location-dot"></i> Krishnagiri Branch</li>
+                        <li><i class="fas fa-location-dot"></i> Coimbatore Branch</li>
+                        <li><i class="fas fa-location-dot"></i> Pollachi Branch</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Meadow Minds. All Rights Reserved.</p>
+                <div class="developer-logo">
+                    Powered by
+                    <a href="https://aspirentech.com" target="_blank">
+                        <img src="https://aspirentech.com/assets/aspirentech-logo-new-B7I5o4Z6.png" alt="AspirenTech"
+                            height="20">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
