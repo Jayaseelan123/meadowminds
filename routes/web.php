@@ -31,6 +31,13 @@ Route::get('/login', [AdminController::class, 'loginForm'])->name('login');
 Route::post('/login', [AdminController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
+// Forgot & Reset Password Routes (guest only)
+Route::get('/forgot-password', [AdminController::class, 'forgotPasswordForm'])->name('password.forgot');
+Route::post('/forgot-password', [AdminController::class, 'forgotPasswordSend'])->name('password.forgot.send');
+Route::get('/reset-password/{token}', [AdminController::class, 'resetPasswordForm'])->name('password.reset');
+Route::post('/reset-password', [AdminController::class, 'resetPasswordUpdate'])->name('password.reset.update');
+
+
 // Admin Panel Routes
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -39,7 +46,13 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/contacts', [AdminController::class, 'contactsIndex'])->name('contacts.index');
     Route::get('/contacts/{id}', [AdminController::class, 'contactsShow'])->name('contacts.show');
     Route::delete('/contacts/{id}', [AdminController::class, 'contactsDelete'])->name('contacts.destroy');
+    Route::post('/contacts/{id}/reply', [AdminController::class, 'contactsReply'])->name('contacts.reply');
 
     // Gallery Management CRUD
     Route::resource('gallery', AdminGalleryController::class);
+
+    // Profile Management
+    Route::get('/profile', [AdminController::class, 'profileShow'])->name('profile');
+    Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('profile.update');
+    Route::post('/profile/check-password', [AdminController::class, 'checkOldPassword'])->name('profile.check-password');
 });

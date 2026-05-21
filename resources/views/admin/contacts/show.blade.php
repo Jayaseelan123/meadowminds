@@ -27,6 +27,30 @@
                     </div>
                 </div>
             </div>
+
+            @if($contact->replies->isNotEmpty())
+                @foreach($contact->replies as $index => $reply)
+                    <div class="card mb-4 border-success shadow-sm">
+                        <div class="card-header bg-success text-white py-3 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">
+                                <i class="fas fa-reply me-2"></i> Admin Reply #{{ $index + 1 }}
+                            </span>
+                            <span class="badge bg-white text-success fw-bold">
+                                Sent on {{ $reply->created_at->format('M d, Y \a\t h:i A') }}
+                            </span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="mb-3">
+                                <span class="fw-bold text-dark">Subject: <span class="text-success">{{ $reply->subject }}</span></span>
+                            </div>
+                            <h6 class="text-muted fw-bold text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 0.5px;">Reply Message Description</h6>
+                            <div class="p-3 bg-light border rounded-3" style="white-space: pre-line; line-height: 1.7; color: #1e293b; font-size: 1.05rem;">
+                                {{ $reply->message }}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
 
         <!-- Sender Meta details -->
@@ -66,9 +90,15 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="mailto:{{ $contact->email }}?subject=RE: {{ rawurlencode($contact->subject) }}" class="btn btn-primary p-3 fw-bold d-flex align-items-center justify-content-center gap-2" style="border-radius: 10px;">
-                            <i class="fas fa-reply"></i> Reply via Email
-                        </a>
+                        @if($contact->replies->isNotEmpty())
+                            <button type="button" class="btn btn-outline-primary p-3 fw-bold d-flex align-items-center justify-content-center gap-2" style="border-radius: 10px;" data-bs-toggle="modal" data-bs-target="#replyModal">
+                                <i class="fas fa-reply-all"></i> Send Another Reply
+                            </button>
+                        @else
+                            <button type="button" class="btn btn-primary p-3 fw-bold d-flex align-items-center justify-content-center gap-2" style="border-radius: 10px;" data-bs-toggle="modal" data-bs-target="#replyModal">
+                                <i class="fas fa-reply"></i> Reply via Email
+                            </button>
+                        @endif
                         
                         <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="POST" class="d-grid">
                             @csrf
@@ -79,6 +109,56 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                <div class="modal-header border-0 bg-light py-3 px-4" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="modal-title fw-bold text-dark" id="replyModalLabel">
+                        <i class="fas fa-reply text-primary me-2"></i> Reply to {{ $contact->name }}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('admin.contacts.reply', $contact->id) }}" method="POST">
+                    @csrf
+                    <div class="modal-body p-4">
+                        <!-- Recipient Email -->
+                        <div class="mb-3">
+                            <label class="form-label text-muted fw-semibold">Recipient Email</label>
+                            <input type="email" class="form-control bg-light" value="{{ $contact->email }}" readonly>
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="mb-3">
+                            <label for="subject" class="form-label text-muted fw-semibold">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" value="RE: {{ $contact->subject ?? 'Your inquiry with Meadow Minds' }}" required>
+                        </div>
+
+                        <!-- Original Message Reference -->
+                        <div class="mb-3">
+                            <label class="form-label text-muted fw-semibold">Original Message Description</label>
+                            <div class="p-3 bg-light border rounded" style="max-height: 150px; overflow-y: auto; font-size: 0.9rem; white-space: pre-line; color: #475569;">
+                                {{ $contact->message }}
+                            </div>
+                        </div>
+
+                        <!-- Reply Message -->
+                        <div class="mb-3">
+                            <label for="message" class="form-label text-muted fw-semibold">Reply Message (Direct Message)</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" placeholder="Type your reply here..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 px-4 pb-4 pt-0">
+                        <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal" style="border-radius: 8px;">Cancel</button>
+                        <button type="submit" class="btn btn-primary px-4 py-2 fw-bold" style="border-radius: 8px;">
+                            <i class="fas fa-paper-plane me-1"></i> Send Reply
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -40,7 +40,9 @@
                                     </div>
                                 </td>
                                 <td>
-                                    @if($msg->is_read)
+                                    @if($msg->replies->isNotEmpty())
+                                        <span class="badge bg-info-subtle text-info px-2 py-1" style="font-weight: normal;"><i class="fas fa-reply me-1"></i> Replied</span>
+                                    @elseif($msg->is_read)
                                         <span class="badge bg-success-subtle text-success px-2 py-1" style="font-weight: normal;">Read</span>
                                     @else
                                         <span class="badge bg-danger text-white px-2 py-1" style="font-weight: bold;">Unread</span>

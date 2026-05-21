@@ -233,6 +233,11 @@
                         <div class="text-truncate" style="max-width: 160px; font-size: 0.78rem;">{{ auth()->user()->email ?? 'admin@meadowminds.com' }}</div>
                     </li>
                     <li>
+                        <a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" style="font-size: 0.9rem;" href="{{ route('admin.profile') }}">
+                            <i class="fas fa-user-cog text-muted" style="width: 16px;"></i> Profile Settings
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" style="font-size: 0.9rem;" href="{{ route('home') }}" target="_blank">
                             <i class="fas fa-globe text-muted" style="width: 16px;"></i> Visit Website
                         </a>

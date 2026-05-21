@@ -104,10 +104,15 @@
 
             <div class="mb-4">
                 <label for="password" class="form-label text-muted fw-semibold">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                <div class="input-group">
+                    <input type="password" class="form-control border-end-0" id="password" name="password" placeholder="••••••••" required style="border-radius: 10px 0 0 10px;">
+                    <button class="btn btn-outline-secondary bg-white border-start-0" type="button" id="togglePassword" style="border-radius: 0 10px 10px 0; border-color: #cbd5e1;">
+                        <i class="fas fa-eye text-muted"></i>
+                    </button>
+                </div>
             </div>
 
-            <div class="mb-4 d-flex justify-content-between align-items-center">
+            <div class="mb-4">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="remember" name="remember">
                     <label class="form-check-label text-muted text-sm" for="remember">Remember me</label>
@@ -117,10 +122,29 @@
             <button type="submit" class="btn btn-primary w-100 mb-3">
                 <i class="fas fa-sign-in-alt me-2"></i> Log In
             </button>
+
+            <div class="text-center">
+                <a href="{{ route('password.forgot') }}" class="text-decoration-none fw-semibold" style="font-size: 0.88rem; color: var(--color-primary);">Forgot Password?</a>
+            </div>
         </form>
     </div>
 
     <!-- Bootstrap 5 Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    </script>
 </body>
 </html>
